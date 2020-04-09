@@ -15,16 +15,29 @@
 extern char **environ;
 
 /* Prototypes */
+int main(int argc, char *argv[], char *envp[]);
+
+/*prompt*/
+int inter_shellby(char *paths[], char *envp[]);
+char **input_tokens(char *str);
+void print_env(char *token, char **env);
+/*aux funcitons*/
+int _strcmp(const char *s1,const  char *s2);
+unsigned int _strlen(const char *s);
+char *_strncpy(char *dest, char *src, int n);
+
 char *_getenv(const char *name);
-int _strcmp(const char *s1, const char *s2);
+
+/*store paths*/
+char **store_paths(char **envp);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-int _strlen(const char *s);
 char *concat(const char *str1, const char *str2);
 
-char **store_paths(char **envp);
-int inter_shellby(char *paths[], char *envp[]);
+/*non_inter_shellby*/
 int non_inter_shellby(char *paths[], int argc, char *argv[], char *envp[]);
 void free_str_arr(char **arr);
+
+/* look in PATH */
 char *look_inPATH(char **token, char **paths);
 
 
