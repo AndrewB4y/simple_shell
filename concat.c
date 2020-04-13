@@ -22,7 +22,10 @@ char *concat(const char *str1, const char *str2)
 
 	i = 0;
 	while (str1[i] != '\0')
-		temp[i] = str1[i++];
+	{
+		temp[i] = str1[i];
+		i++;
+	}
 	j = 0;
 	while (str2[j] != '\0')
 		temp[i++] = str2[j++];
