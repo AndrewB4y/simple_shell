@@ -10,8 +10,6 @@
 
 int main(int argc, char *argv[])
 {
-	char **commands, **paths;
-
 
 	if (isatty(STDIN_FILENO) != 1)
 	{

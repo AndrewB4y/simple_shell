@@ -18,7 +18,7 @@ extern char **environ;
 
 /*prompt*/
 int inter_shellby(void);
-char **input_tokens(char *token);
+char **input_tokens(char *token, char *buffer);
 void print_env(char *token, char **env);
 /*aux functions*/
 int _strcmp(const char *s1, const  char *s2);
