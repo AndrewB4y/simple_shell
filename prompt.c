@@ -8,63 +8,58 @@
 int inter_shellby(char *paths[], char *envp[])
 {
 	size_t line_size  = 0;
-	char *buffer = NULL, *token = NULL, **commands;
-	ssize_t line = 0;
-	pid_t child_pid;
-	int status;
-
-	//show prompt
+	char *buffer = NULL, *token = NULL, **commands = NULL;
+	char *exit_command = "exit", *env_command = "env";
+        ssize_t line = 0;
+	int i, j, k;
+ 	
 	printf("shellby~$");
-
-	/*loop that reads a line always*/
-	while((line = getline(&buffer, &line_size, stdin)))
+	while(line = getline(&buffer, &line_size, stdin))
 	{
 		/*check end of file*/
 		if (line == EOF)
 			free(buffer);
-	
-		/*first token to search local, exit and env*/
-		token = strtok(buffer, " ");
-		if (token != NULL)
+		 /*split the buffer in tokens to be allocate*/
+		token = strtok(buffer, " \n\t\r");
+		printf("el token es:%s\n",token);
+                commands = input_tokens(token);
+		if (commands == NULL)
+			 return (0);
+
+		 /*exit when exit command is entered*/
+		if ((_strcmp(exit_command, commands[0])) == 1)
 		{
-			/*command EXIT*/
-			if (_strcmp(token, "exit"))
-			{
-				free(token);
-				exit(EXIT_SUCCESS);
-			}
-			/*command ENV*/
-			else if(_strcmp(token, "env"))
-				print_env(token, envp);	
+			printf("se tecleo exit\n");
+                        free(buffer);
+			free(commands);
+			exit(0);
 		}
-		
-		/*array of tokens*/
-		commands = input_tokens(token);
-		/*create fork*/
-		child_pid = fork();
-		
-			
-		if (child_pid == 0)
+
+
+		 /*print commmands*/
+		printf("command:");
+		for (i = 0; commands[i] != NULL ;i++)
 		{
-			printf("forked succes pid = 0\n");
-			execve(commands[0], commands, NULL);
+			printf("%s", commands[i]);
+			printf(" ");
 		}
-		else if (child_pid == -1)
+		printf("\n");
+
+
+		/*create a new process using fork()*/
+		/*pid = fork();
+		if (pid == -1)
+			perror("Error");
+		if(pid == 0)
 		{
-			perror("Error:");
-			printf("forked pid not 0");
-		}
-		else{	
-			wait(&status); //entender bien el status
-			free(buffer);
-			free(token);
-		}
 		
-		/*reset line_size adn buffer*/
+		}*/
+
+		free(commands);
+		fee(buffer);
 		line_size = 0;
 		buffer = NULL;
 		printf("shellby~$");
-	}
-	return (0);
+	 }
 }
  
