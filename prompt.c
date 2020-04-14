@@ -5,7 +5,7 @@
 *@argv: token array
 *@env: environment vairables
 */
-int inter_shellby(int argc, char *argv[], char *env[])
+int inter_shellby(char *paths[], char *envp[])
 {
 	size_t line_size  = 0;
 	char *buffer = NULL, *token = NULL, **commands;
@@ -13,7 +13,7 @@ int inter_shellby(int argc, char *argv[], char *env[])
 	pid_t child_pid;
 	int status;
 
-
+	//show prompt
 	printf("shellby~$");
 
 	/*loop that reads a line always*/
@@ -35,10 +35,11 @@ int inter_shellby(int argc, char *argv[], char *env[])
 			}
 			/*command ENV*/
 			else if(_strcmp(token, "env"))
-				print_env(token, env);	
+				print_env(token, envp);	
 		}
+		
 		/*array of tokens*/
-		commands = input_tokens(buffer);
+		commands = input_tokens(token);
 		/*create fork*/
 		child_pid = fork();
 		

@@ -24,7 +24,7 @@ void print_env(char *token, char **env);
 /*aux funcitons*/
 int _strcmp(const char *s1,const  char *s2);
 unsigned int _strlen(const char *s);
-char *_strncpy(char *dest, char *src, int n);
+char *_strcpy(char *dest, char *src);
 
 char *_getenv(const char *name);
 

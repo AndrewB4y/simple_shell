@@ -6,7 +6,8 @@
  *
  * Return: 1 if equal, 0 if not equal
  */
-int _strcmp(char *s1, char *s2)
+int _strcmp(const char *s1, const char *s2)
+
 {
 	unsigned int i = 0;
 
@@ -25,7 +26,7 @@ int _strcmp(char *s1, char *s2)
  * @s: string to find the length 
  * Return: unsigned int length of the string
  */
-unsigned int _strlen(char *s)
+unsigned int _strlen(const char *s)
 {
 	unsigned int counter = 0;
 
@@ -35,23 +36,21 @@ unsigned int _strlen(char *s)
 	return (counter);
 }
 
+
 /**
- * _strncpy - copies ones string to another string in memory
- * @dest: destination string to copy from
- * @src: string to copy to
- * @n: the length to copy
- *
- * Return: the dest memory address
+ * _strcpy - copies the string pointed to by src into dest
+ * @dest: destination of the copy
  */
-char *_strncpy(char *dest, char *src, int n)
+char *_strcpy(char *dest, char *src)
 {
-	int i;
+	int i = 0;
 
-	for (i = 0; i < n && src[i] != '\0'; i++)
-		dest[i] = src[i];
-
-	for ( ; i < n; i++)
-		dest[i] = '\0';
+	while (*(src + i) != '\0')
+	{
+		*(dest + i) = *(src + i);
+		++i;
+	}
+	*(dest + i) = *(src + i);
 
 	return (dest);
 }

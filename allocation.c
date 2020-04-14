@@ -7,33 +7,33 @@
 
 char **input_tokens(char *str)
 {
-         char **commands;
-          char *token;
-          int i = 1, j;
-  
-       /*   if (argc < 2)
+         /* if (argc < 2)
              return (0);
-          buffer=  argv[1];*/
-          printf("text %s\n", str);
-          token = strtok(str, " \n"); // git\0push origin master
-          commands = malloc(sizeof(char *));
-          if (commands == NULL)
-                  return (NULL);
-  
-         printf("commands%s\n",token);
-          while(commands != NULL)
-          {
-                  commands = _realloc(commands, sizeof(char *), sizeof(char *) * i);
-                  for (j = 0 ; token[j] != '\0' ; j++)
-                  {
-                          commands[i] = malloc(sizeof(_strlen(token[j])));
-                          printf("token = %s\n",commands[i]);
-                  }   
-                      
-                  i++;
-          }
-  
-          free(token);
-          free(commands);
-          token = strtok(NULL, " \n");
-  }
+         token = argv[1];*/
+         printf("%s",str);
+         char **cmnds = NULL;
+         size_t c_size = 0;
+         int i = 0;
+         unsigned int token_len = 0;
+ 
+         token_len = _strlen(str);
+ 
+         while (str != NULL)
+         {
+                 cmnds = _realloc(cmnds, c_size, c_size + sizeof(char *));
+                 if (cmnds == NULL)
+                         return (NULL);
+                 c_size += sizeof(char *);
+                 cmnds[i] = malloc(token_len);
+                 cmnds[i] = _strcpy(cmnds[i], str);
+                 str = strtok(NULL, " \n\t\r");
+                 printf("%s",str);
+                 i++;
+         }
+         cmnds = _realloc(cmnds, c_size, c_size + sizeof(char *));
+         if (cmnds == NULL)
+                 return (NULL);
+         c_size += sizeof(char *);
+         cmnds[i] = NULL;
+         return (cmnds);
+}
