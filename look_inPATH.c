@@ -3,18 +3,19 @@
 /**
  * look_inPATH - looks in paths for a function to be valid.
  * @token: token to be looked in the PATH directories.
- * @paths: char pointer array holding a tokenazied PATH.
  *
  * Return: if token found in PATH return a newly allocated
  *         string with PATH_found/token. NULL if not found.
  */
 
-char *look_inPATH(char **token, char **paths)
+char *look_inPATH(char **token)
 {
 	int file_stat, i;
 	struct stat file_info;
 	char *full_path = NULL, *temp = NULL;
+	char **paths = NULL;
 
+	paths = store_paths();
 	i = 0;
 	while (paths[i] != NULL)
 	{
@@ -34,10 +35,12 @@ char *look_inPATH(char **token, char **paths)
 	if (paths[i] == NULL)
 	{
 		free(paths[0] - 5);
+		free(paths);
 		return (NULL);
 	}
 	*token = full_path;
 	free(paths[0] - 5);
+	free(paths);
 
 	return (full_path);
 }

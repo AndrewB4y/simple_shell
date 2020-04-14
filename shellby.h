@@ -21,12 +21,10 @@ int inter_shellby(char *paths[], char *envp[]);
 char **input_tokens(char *str);
 void print_env(char *token, char **env);
 /*aux functions*/
-int _strcmp(const char *s1,const  char *s2);
-int _strncmp(const char *s1,const  char *s2, size_t n);
+int _strcmp(const char *s1, const  char *s2);
+int _strncmp(const char *s1, const  char *s2, size_t n);
 unsigned int _strlen(const char *s);
 char *_strcpy(char *dest, char *src);
-
-char *_getenv(const char *name);
 
 /*store paths*/
 char **store_paths(void);
@@ -34,11 +32,12 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char *concat(const char *str1, const char *str2);
 
 /*non_inter_shellby*/
-int non_inter_shellby(char *paths[], int argc, char *argv[], char *envp[]);
+int non_inter_shellby(int argc, char *argv[]);
+int non_inter_piped(void);
 void free_str_arr(char **arr);
 
 /* look in PATH */
-char *look_inPATH(char **token, char **paths);
+char *look_inPATH(char **token);
 
 
 #endif  /* _SHELLBY_H_ */

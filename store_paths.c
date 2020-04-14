@@ -9,11 +9,9 @@
 char **store_paths(void)
 {
 	int i = 0;
-	char *token = NULL, *path_c = NULL;
-	char **paths = NULL;
+	char *token = NULL, *path_c = NULL, **paths = NULL;
 	size_t path_sz = 0;
 
-	i = 0;
 	while (environ[i] != NULL)
 	{
 		if (_strncmp((const char *)environ[i], "PATH=", 5) == 0)
@@ -22,7 +20,6 @@ char **store_paths(void)
 	}
 	if (environ[i] == NULL)
 		return (NULL);
-
 	path_c = malloc(_strlen(environ[i]));
 	if (path_c == NULL)
 		return (NULL);
@@ -39,9 +36,8 @@ char **store_paths(void)
 			return (NULL);
 		}
 		path_sz += sizeof(char *);
-		paths[i] = token;
+		paths[i++] = token;
 		token = strtok(NULL, ":\n");
-		i++;
 	}
 	paths = _realloc(paths, path_sz, path_sz + sizeof(char *));
 	if (paths == NULL)
