@@ -7,7 +7,7 @@
  * Return: the length of the string as an int
  */
 
-int _strlen(const char *s)
+unsigned int _strlen(const char *s)
 {
 	int count = 0;
 

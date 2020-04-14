@@ -14,7 +14,6 @@ char *look_inPATH(char **token, char **paths)
 	int file_stat, i;
 	struct stat file_info;
 	char *full_path = NULL, *temp = NULL;
-	size_t fullP_size = 0;
 
 	i = 0;
 	while (paths[i] != NULL)
@@ -34,9 +33,11 @@ char *look_inPATH(char **token, char **paths)
 	}
 	if (paths[i] == NULL)
 	{
+		free(paths[0] - 5);
 		return (NULL);
 	}
 	*token = full_path;
+	free(paths[0] - 5);
 
 	return (full_path);
 }
