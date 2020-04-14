@@ -1,18 +1,17 @@
 #include "shellby.h"
 /**
 *inter_shellby - intercactve shell
-*@argc: each token
-*@argv: token array
-*@env: environment vairables
+*
+* Return: 0 on success.
 */
-int inter_shellby(char *paths[], char *envp[])
+int inter_shellby(void)
 {
 	size_t line_size  = 0;
 	char *buffer = NULL, *token = NULL, **commands = NULL;
 	char *exit_command = "exit", *env_command = "env";
         ssize_t line = 0;
 	int i, j, k;
- 	
+
 	printf("shellby~$");
 	while(line = getline(&buffer, &line_size, stdin))
 	{
@@ -52,7 +51,7 @@ int inter_shellby(char *paths[], char *envp[])
 			perror("Error");
 		if(pid == 0)
 		{
-		
+
 		}*/
 
 		free(commands);
@@ -62,4 +61,3 @@ int inter_shellby(char *paths[], char *envp[])
 		printf("shellby~$");
 	 }
 }
- 

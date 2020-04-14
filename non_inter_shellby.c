@@ -50,7 +50,7 @@ int non_inter_piped(void)
 				free(buffer);
 				return (0);
 			}
-			heap_token = look_inPATH(&token, paths);
+			heap_token = look_inPATH(&token);
 			commands = input_tokens(token);
 			child_pid = fork();
 			if (child_pid == 0)
@@ -64,7 +64,7 @@ int non_inter_piped(void)
 			{
 				wait(&status);
 				free(heap_token);
-				free_str_arr(commands);
+				free(commands);
 			}
 		}
 		bytes = getline(&buffer, &size, stdin);
