@@ -14,7 +14,6 @@ int non_inter_shellby(int argc, char *argv[])
 	{
 		printf("Undefined Non-interactive\n");
 		printf("argv[0] %s\n", argv[0]);
-		printf("envp[0] %s\n", envp[0]);
 		/*command from args*/
 	}
 	else
@@ -34,8 +33,9 @@ int non_inter_shellby(int argc, char *argv[])
 int non_inter_piped(void)
 {
 	char **commands = NULL;
-	char *buffer = NULL, *token = NULL, heap_token = NULL;
-	size_t size = 0, bytes = 0;
+	char *buffer = NULL, *token = NULL, *heap_token = NULL;
+	size_t size = 0;
+	ssize_t bytes = 0;
 	pid_t child_pid;
 	int status;
 
@@ -50,8 +50,8 @@ int non_inter_piped(void)
 				free(buffer);
 				return (0);
 			}
-			heap_token = look_inPATH(&token, paths);
-			commands = input_tokens(token);
+			heap_token = look_inPATH(&token);
+			commands = input_tokens(token, buffer);
 			child_pid = fork();
 			if (child_pid == 0)
 			{
@@ -64,7 +64,7 @@ int non_inter_piped(void)
 			{
 				wait(&status);
 				free(heap_token);
-				free_str_arr(commands);
+				free(commands);
 			}
 		}
 		bytes = getline(&buffer, &size, stdin);
