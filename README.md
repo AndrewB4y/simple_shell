@@ -5,7 +5,7 @@
 This repository contains the final project of the first trimester at Holberton school, is about building a program as similar as possible to the unix shell using the programming language C.
 
 # Table of Contents 
- 
+
 1. [Authors](#Authors)
 2. [How Use](#How-Use)
 3. .[explanation](#Explanation)
@@ -21,7 +21,6 @@ This repository contains the final project of the first trimester at Holberton s
 
 - Twitter: [@lsanjuan92](https://twitter.com/lsanjuan92)
 - Github: [@luiscode92](https://github.com/luicode92)
-
 
 # How Use
 
@@ -39,7 +38,6 @@ This repository contains the final project of the first trimester at Holberton s
 `$ gcc -Wall -Werror -Wextra -pedantic *.c`
 
 ## Explanation
-
 
 ## Non interactive
 
