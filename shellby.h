@@ -25,6 +25,7 @@ int _strcmp(const char *s1, const  char *s2);
 int _strncmp(const char *s1, const  char *s2, size_t n);
 unsigned int _strlen(const char *s);
 char *_strcpy(char *dest, char *src);
+void free_all(char *buffer, char **commands, char *heap_token);
 
 /*store paths*/
 char **store_paths(void);

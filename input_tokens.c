@@ -4,7 +4,6 @@
  * input_tokens - finds and allocates tokens in a buffer.
  * @token: first token to be allocated.
  * @buffer: buffer to continue the tokenize.
- *
  * Return: address of allocated pointers, NULL if fails.
  */
 
@@ -26,7 +25,6 @@ char **input_tokens(char *token, char *buffer)
 	token = strtok(buffer + last, " \n\t\r");
 	while (token != NULL)
 	{
-		printf("Token %d: %s\n", i, token);
 		cmnds = _realloc(cmnds, c_size, c_size + sizeof(char *));
 		if (cmnds == NULL)
 		{

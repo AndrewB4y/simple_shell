@@ -1,26 +1,26 @@
-# simple_shell
 # simple shell
 
-The project, simple shell is the final project of the first trimester in Holberton school, is about building a program as similar as possible to the unix shell using the programming language C.
+# simple shell
 
-This project was built by Alejandro López and Gonzalo Gomez Millan.
+This repository contains the final project of the first trimester at Holberton school, is about building a program as similar as possible to the unix shell using the programming language C.
 
-# Table of Contents
+# Table of Contents 
+ 
 1. [Authors](#Authors)
 2. [How Use](#How-Use)
 3. .[explanation](#Explanation)
 
 # Authors
 
- 👤 **Alejandro López**
+ 👤 **Andres Bayona**
 
-- Twitter: [@alejolo311](https://twitter.com/alejolo311)
-- Github: [@alejolo311](https://github.com/alejolo311)
+- Twitter: [@AndresBayMon](https://twitter.com/AndresBayMon)
+- Github:  [@AndrewB4y](https://github.com/AndrewB4y)
 
-👤 **Gonzalo Gomez Millan**
+👤 **Luis Enrique Sanjuan Melo**
 
-- Twitter: [@gogomillan](https://twitter.com/gogomillan)
-- Github: [@gogomillan](https://github.com/gogomillan)
+- Twitter: [@lsanjuan92](https://twitter.com/lsanjuan92)
+- Github: [@luiscode92](https://github.com/luicode92)
 
 
 # How Use
