@@ -20,7 +20,7 @@ extern char **environ;
 /*prompt*/
 int inter_shellby(void);
 char **input_tokens(char *token, char *buffer);
-void print_env();
+void print_env(void);
 int process_line(char **buffer, size_t *line_size, int *count);
 
 /*aux functions*/
