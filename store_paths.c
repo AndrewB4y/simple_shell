@@ -12,12 +12,11 @@ char **store_paths(void)
 	char *token = NULL, *path_c = NULL, **paths = NULL;
 	size_t path_sz = 0;
 
-	while (environ[i] != NULL)
-	{
+	if (environ == NULL || environ[i] == NULL)
+		return (NULL);
+	while (environ[i++] != NULL)
 		if (_strncmp((const char *)environ[i], "PATH=", 5) == 0)
 			break;
-		i++;
-	}
 	if (environ[i] == NULL)
 		return (NULL);
 	path_c = malloc(_strlen(environ[i]) + 1);

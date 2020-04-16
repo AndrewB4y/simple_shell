@@ -4,7 +4,7 @@
  * look_inPATH - looks in paths for a function to be valid.
  * @token: token to be looked in the PATH directories.
  *
- * Return: if token found in PATH return a newly allocated
+ * Return: if token is found in PATH return a newly allocated
  *         string with PATH_found/token. NULL if not found.
  */
 
@@ -18,6 +18,8 @@ char *look_inPATH(char **token)
 	if (_strchr(*token, '/') != 0)
 		return (NULL);
 	paths = store_paths();
+	if (paths == NULL)
+		return (NULL);
 	i = 0;
 	while (paths[i] != NULL)
 	{
@@ -43,6 +45,5 @@ char *look_inPATH(char **token)
 	*token = full_path;
 	free(paths[0] - 5);
 	free(paths);
-
 	return (full_path);
 }
