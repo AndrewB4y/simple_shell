@@ -9,6 +9,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include <errno.h>
 
 /* Structures and global variables */
 
@@ -42,6 +43,7 @@ void print_number(int n);
 
 /* look in PATH */
 char *look_inPATH(char **token);
+char *_strchr(char *s, char c);
 
 
 #endif  /* _SHELLBY_H_ */
