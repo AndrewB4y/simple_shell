@@ -22,6 +22,9 @@ This repository contains the final project of the first trimester at Holberton s
 - Twitter: [@lsanjuan92](https://twitter.com/lsanjuan92)
 - Github: [@luiscode92](https://github.com/luicode92)
 
+For more information check this post on Medium
+(https://medium.com/@luiscode92/how-to-code-simple-shell-in-c-312ee5dbe154)
+
 # How Use
 
 ## How to compile
@@ -51,3 +54,4 @@ the program is execute and the prompt is print, and wait for the user.
 
 `$ ./hsh`
 `($)`
+
