@@ -1,0 +1,25 @@
+.TH hsh 1 "April 16" "version 1.0" "Holberton simple_shell man page"
+.SH NAME
+hsh - Simple command interpreter shell-like
+.SH SYNOPSIS
+.B Non-ineractive
+.br
+echo "command" | ./hsh
+.br
+.B Interactive
+.br
+ ./hsh
+.SH DESCRIPTION
+hsh is a program of a simplified shell-alike command interpreter for Linux systems. The current version was compiled on Ubuntu 14.04 using gcc 4.8.4. This program intents to provide a command line user interface for Unix-like OS, it is more or less a micro version of the Unix Shell. 
+
+.SH OPTIONS
+.RS
+
+.SH EXAMPLES:
+
+.SH SEE ALSO
+.I sh(1)
+.SH BUGS
+
+.SH AUTHORS
+Andrés Felipe Bayona, Luis Enrique Sanjuan.

@@ -1,8 +1,11 @@
 #include "shellby.h"
+
 /**
-*inter_shellby - intercactve shell
+* inter_shellby - intercactve shell
+*
 * Return: 0 on success.
 */
+
 int inter_shellby(void)
 {
 	size_t line_size  = 0;
