@@ -54,21 +54,21 @@ int process_line(char **buffer, size_t *line_size, int *count)
 	token = strtok(*buffer, " \n\t\r");
 	if (token != NULL)
 	{
+		if (check_built_ins(*buffer, token) == 1)
+		{
+			free(*buffer);
+			*buffer = NULL;
+			*line_size = 0;
+			return (0);
+		}
 		token_o = token;
 		heap_token = look_inPATH(&token);
 		commands = input_tokens(token, *buffer);
 		if (commands == NULL)
 			return (0);
-		if ((_strcmp("exit", commands[0])) == 0)
-		{
-			free_all(*buffer, commands, NULL);
-			exit(0);
-		}
 		child_pid = fork();
 		if (child_pid == 0)
-		{
 			child_exe(commands, token_o, *count);
-		}
 		else if (child_pid == -1)
 		{
 			perror("Error");
