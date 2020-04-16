@@ -16,7 +16,7 @@ char *concat(const char *str1, const char *str2)
 
 	len_t = _strlen(str1) + _strlen(str1);
 
-	temp = malloc(sizeof(char) * (len_t + 1));
+	temp = malloc(sizeof(char) * (len_t + 3));
 	if (temp == NULL)
 	{
 		perror("malloc");
