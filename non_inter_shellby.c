@@ -66,7 +66,6 @@ int non_inter_piped(char *argv)
 				waitpid(child_pid, &status, 0);
 				/*error = errno;*/
 				error = WEXITSTATUS(status);
-				printf("exit status: %d\n", error);
 			}
 			free_all(buffer, cmnds, heap_token);
 			size = 0;

@@ -30,6 +30,7 @@ int inter_shellby(void)
 		}
 
 		error = process_line(&buffer, &line_size, &count);
+		write(STDOUT_FILENO, "shellby~$ ", 10);
 	}
 	return (error);
 }
@@ -84,7 +85,5 @@ int process_line(char **buffer, size_t *line_size, int *count)
 		*buffer = NULL;
 	}
 	(*count)++;
-	write(STDOUT_FILENO, "shellby~$ ", 10);
-
 	return (error);
 }
