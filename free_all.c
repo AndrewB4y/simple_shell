@@ -8,7 +8,19 @@
 
 void free_all(char *buffer, char **commands, char *heap_token)
 {
-	free(buffer);
-	free(commands);
-	free(heap_token);
+	if (buffer != NULL)
+	{
+		free(buffer);
+		buffer = NULL;
+	}
+	if (commands != NULL)
+	{
+		free(commands);
+		commands = NULL;
+	}
+	if (heap_token != NULL)
+	{
+		free(heap_token);
+		heap_token = NULL;
+	}
 }

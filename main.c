@@ -11,7 +11,7 @@
 int main(int argc, char *argv[])
 {
 
-	if (isatty(STDIN_FILENO) != 1)
+	if (isatty(STDIN_FILENO) != 1 || argc > 1)
 	{
 		non_inter_shellby(argc, argv);
 	}

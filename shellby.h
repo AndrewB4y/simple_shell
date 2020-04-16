@@ -20,6 +20,8 @@ extern char **environ;
 int inter_shellby(void);
 char **input_tokens(char *token, char *buffer);
 void print_env(char *token, char **env);
+int process_line(char **buffer, size_t *line_size, int *count);
+
 /*aux functions*/
 int _strcmp(const char *s1, const  char *s2);
 int _strncmp(const char *s1, const  char *s2, size_t n);
@@ -34,8 +36,9 @@ char *concat(const char *str1, const char *str2);
 
 /*non_inter_shellby*/
 int non_inter_shellby(int argc, char *argv[]);
-int non_inter_piped(void);
-void free_str_arr(char **arr);
+int non_inter_piped(char *argv);
+void child_exe(char **cmnds, char *argv, int count);
+void print_number(int n);
 
 /* look in PATH */
 char *look_inPATH(char **token);

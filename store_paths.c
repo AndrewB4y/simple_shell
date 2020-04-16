@@ -20,7 +20,7 @@ char **store_paths(void)
 	}
 	if (environ[i] == NULL)
 		return (NULL);
-	path_c = malloc(_strlen(environ[i]));
+	path_c = malloc(_strlen(environ[i]) + 1);
 	if (path_c == NULL)
 		return (NULL);
 	path_c = _strcpy(path_c, environ[i]);

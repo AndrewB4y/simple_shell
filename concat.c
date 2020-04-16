@@ -18,7 +18,10 @@ char *concat(const char *str1, const char *str2)
 
 	temp = malloc(sizeof(char) * (len_t + 1));
 	if (temp == NULL)
+	{
+		perror("malloc");
 		return (NULL);
+	}
 
 	i = 0;
 	while (str1[i] != '\0')

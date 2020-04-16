@@ -10,37 +10,38 @@
 
 int non_inter_shellby(int argc, char *argv[])
 {
+	char *args_temp[2] = {NULL, NULL};
+
 	if (argc > 1)
 	{
-		printf("Undefined Non-interactive\n");
-		printf("argv[0] %s\n", argv[0]);
-		/*command from args*/
+		/*file input*/
+		args_temp[0] = argv[1];
+		child_exe(args_temp, argv[0], 1);
 	}
 	else
 	{
 		/*commands from pipe*/
-		non_inter_piped();
+		non_inter_piped(argv[0]);
 	}
 	return (0);
 }
 
 /**
  * non_inter_piped - runs non interactive shell when input is piped.
+ * @argv: name of the program.
  *
  * Return: 0 on success.
  */
 
-int non_inter_piped(void)
+int non_inter_piped(char *argv)
 {
-	char **commands = NULL;
-	char *buffer = NULL, *token = NULL, *heap_token = NULL;
+	char **cmnds = NULL, *buffer = NULL, *token = NULL;
+	char *heap_token = NULL;
 	size_t size = 0;
-	ssize_t bytes = 0;
 	pid_t child_pid;
-	int status;
+	int status, error = 0, count = 1;
 
-	bytes = getline(&buffer, &size, stdin);
-	while (bytes != -1)
+	while ((getline(&buffer, &size, stdin)) != -1)
 	{
 		if (*buffer != '\n')
 		{
@@ -51,23 +52,25 @@ int non_inter_piped(void)
 				return (0);
 			}
 			heap_token = look_inPATH(&token);
-			commands = input_tokens(token, buffer);
+			cmnds = input_tokens(token, buffer);
 			child_pid = fork();
 			if (child_pid == 0)
 			{
-				if (execve(commands[0], commands, NULL) == -1)
-				{
-					perror("Error:");
-				}
+				child_exe(cmnds, argv, count);
 			}
 			else
 			{
 				wait(&status);
-				free(heap_token);
-				free(commands);
+				if (WIFEXITED(status))
+				{
+					error = WEXITSTATUS(status);
+				}
 			}
+			free_all(buffer, cmnds, heap_token);
+			size = 0;
 		}
-		bytes = getline(&buffer, &size, stdin);
+		count++;
 	}
-	return (0);
+	free(buffer);
+	return (error);
 }
