@@ -51,35 +51,38 @@ int process_line(char **buffer, size_t *line_size, int *count)
 	pid_t child_pid;
 
 	token = strtok(*buffer, " \n\t\r");
-	token_o = token;
-	heap_token = look_inPATH(&token);
-	commands = input_tokens(token, *buffer);
-	if (commands == NULL)
-		return (0);
-	if ((_strcmp("exit", commands[0])) == 0)
+	if (token != NULL)
 	{
-		free_all(*buffer, commands, NULL);
-		exit(0);
+		token_o = token;
+		heap_token = look_inPATH(&token);
+		commands = input_tokens(token, *buffer);
+		if (commands == NULL)
+			return (0);
+		if ((_strcmp("exit", commands[0])) == 0)
+		{
+			free_all(*buffer, commands, NULL);
+			exit(0);
+		}
+		child_pid = fork();
+		if (child_pid == 0)
+		{
+			child_exe(commands, token_o, *count);
+		}
+		else if (child_pid == -1)
+		{
+			perror("Error");
+			exit(1);
+		}
+		else
+		{
+			wait(&status);
+			if (WIFEXITED(status))
+				error = WEXITSTATUS(status);
+		}
+		free_all(*buffer, commands, heap_token);
+		*line_size = 0;
+		*buffer = NULL;
 	}
-	child_pid = fork();
-	if (child_pid == 0)
-	{
-		child_exe(commands, token_o, *count);
-	}
-	else if (child_pid == -1)
-	{
-		perror("Error");
-		exit(1);
-	}
-	else
-	{
-		wait(&status);
-		if (WIFEXITED(status))
-			error = WEXITSTATUS(status);
-	}
-	free_all(*buffer, commands, heap_token);
-	*line_size = 0;
-	*buffer = NULL;
 	(*count)++;
 	write(STDOUT_FILENO, "shellby~$ ", 10);
 
