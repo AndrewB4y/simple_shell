@@ -15,6 +15,8 @@ char *look_inPATH(char **token)
 	char *full_path = NULL, *temp = NULL;
 	char **paths = NULL;
 
+	if (_strchr(*token, '/') != 0)
+		return (NULL);
 	paths = store_paths();
 	i = 0;
 	while (paths[i] != NULL)
