@@ -11,15 +11,110 @@ echo "command" | ./hsh
  ./hsh
 .SH DESCRIPTION
 hsh is a program of a simplified shell-alike command interpreter for Linux systems. The current version was compiled on Ubuntu 14.04 using gcc 4.8.4. This program intents to provide a command line user interface for Unix-like OS, it is more or less a micro version of the Unix Shell. 
+.I
+.SS INVOCATION
+.br
+- Interactive mode.
+.br
+.br
+\&$ ./hsh
+.br
+\&shellby~$
+.br
+- Redirecting the standart output.
+\&$ echo "/bin/ls -l" | ./hsh
+.SH FEATURES
+.br
+- Display a prompt and wait for the user to type a command.
+.br
+.br
+- The commands lines handle arguments
+.br
+.br
+- If an executable cannot be found, print an error message and display the prompt again
+.br
+.br
+- Handle the “end of file” condition (Ctrl+D) and the signal (Ctrl+C)
+.br
+.br
+- Print the enviroment with 'env'
 
-.SH OPTIONS
-.RS
 
-.SH EXAMPLES:
+.SH BUILT-IN
+.br
+.B
+env
+.br
+- - Print the environment.
+.br
+.br
+.B
+exit
+.br
+- - Exit with a status custom status.
 
-.SH SEE ALSO
-.I sh(1)
+.br
+.br
+.SH EXAMPLES
+
+.br
+.br
+.B - Interactive mode
+
+.br
+\&$ ./hsh
+.br
+\&shellby~$ /bin/ls /var
+.br
+\&backups  cache  chef  crash  lib  local  lock  log  mail  opt  run  spool  tmp
+.br
+\&shellby~$
+
+.br
+.br
+.br
+.B - Redirected input. Non-interactive mode
+
+.br
+.br
+\&$ echo "/bin/ls -l /var" | ./hsh
+.br
+\&total 44
+.br
+\&drwxr-xr-x  2 root root   4096 Apr 16 06:39 backups
+.br
+\&drwxr-xr-x 12 root root   4096 Apr 16 06:37 cache
+.br
+\&drwxr-xr-x  3 root root   4096 Mar 23 16:30 chef
+.br
+\&drwxrwxrwt  2 root root   4096 Apr 16 13:28 crash
+.br
+\&drwxr-xr-x 53 root root   4096 Apr 16 06:37 lib
+.br
+\&drwxrwsr-x  2 root staff  4096 Apr 10  2014 local
+.br
+\&lrwxrwxrwx  1 root root      9 Nov  7 15:16 lock -> /run/lock
+.br
+\&drwxrwxr-x 10 root syslog 4096 Apr 15 13:59 log
+.br
+\&drwxrwsr-x  2 root mail   4096 Nov  7 15:16 mail
+.br
+\&drwxr-xr-x  2 root root   4096 Nov  7 15:16 opt
+.br
+\&lrwxrwxrwx  1 root root      4 Nov  7 15:16 run -> /run
+.br
+\&drwxr-xr-x  5 root root   4096 Nov  7 15:16 spool
+.br
+\&drwxrwxrwt  2 root root   4096 Nov  7 15:19 tmp
+
+.br
+.br
+.br
 .SH BUGS
+No known bugs. For the current scope, but they are going to be added has they are found.
+
+.SH BUGS REPORTS
+All bug reports go to https://github.com/AndrewB4y/simple_shell.git, or the emails in the AUTHORS file in the repository.
 
 .SH AUTHORS
-Andrés Felipe Bayona, Luis Enrique Sanjuan.
+Andrés Felipe Bayona, Luis Enrique Sanjuan..TH hsh 1 "27 November 2019" "1.0" "Holberton SHell Maunal"

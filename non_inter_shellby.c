@@ -49,11 +49,8 @@ int non_inter_piped(char *argv)
 		token = strtok(buffer, " \n\t\r");
 		if (token != NULL)
 		{
-			if (_strcmp(token, "exit") == 0)
-			{
-				free(buffer);
-				return (0);
-			}
+			if (check_built_ins(buffer, token) == 1)
+				continue;
 			heap_token = look_inPATH(&token);
 			cmnds = input_tokens(token, buffer);
 			child_pid = fork();

@@ -20,7 +20,7 @@ extern char **environ;
 /*prompt*/
 int inter_shellby(void);
 char **input_tokens(char *token, char *buffer);
-void print_env(char *token, char **env);
+void print_env(void);
 int process_line(char **buffer, size_t *line_size, int *count);
 
 /*aux functions*/
@@ -29,6 +29,7 @@ int _strncmp(const char *s1, const  char *s2, size_t n);
 unsigned int _strlen(const char *s);
 char *_strcpy(char *dest, char *src);
 void free_all(char *buffer, char **commands, char *heap_token);
+int check_built_ins(char *buffer, char *token);
 
 /*store paths*/
 char **store_paths(void);
