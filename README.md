@@ -22,8 +22,11 @@ This repository contains the final project of the first trimester at Holberton s
 - Twitter: [@lsanjuan92](https://twitter.com/lsanjuan92)
 - Github: [@luiscode92](https://github.com/luicode92)
 
-For more information check this post on Medium.
-(https://medium.com/@luiscode92/how-to-code-simple-shell-in-c-312ee5dbe154)
+
+- For more information check this post on Medium.
+https://medium.com/@luiscode92/how-to-code-simple-shell-in-c-312ee5dbe154
+- Check the flowchart of the project
+https://drive.google.com/file/d/1EksbgqVx6-x3OaZXdOPMaQPSvtUgdqnl/view?usp=sharing
 
 # How Use
 
