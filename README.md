@@ -1,6 +1,4 @@
-# simple shell
-
-# simple shell
+# SIMPLE SHELL
 
 This repository contains the final project of the first trimester at Holberton school, is about building a program as similar as possible to the unix shell using the programming language C.
 
@@ -8,7 +6,7 @@ This repository contains the final project of the first trimester at Holberton s
 
 1. [Authors](#Authors)
 2. [How Use](#How-Use)
-3. .[explanation](#Explanation)
+3. [explanation](#Explanation)
 
 # Authors
 
@@ -58,3 +56,6 @@ the program is execute and the prompt is print, and wait for the user.
 `$ ./hsh`
 `($)`
 
+Licensing
+=========
+Simple Shell is licensed under the MIT License.
